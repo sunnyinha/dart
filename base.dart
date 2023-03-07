@@ -1,31 +1,39 @@
 // class
 //데이터와 해당 데이터를 조작하는 함수(메소드)를 하나의 단위로 묶어서 추상화된 개념
 class Player {
-  //late : 변수에 나중에 값 받아올거임
-  // late final String name;
-  // late int xp;
-
-  // 생성자(constructor)
-  // Player(String name, int xp) {
-  //   this.name = name;
-  //   this.xp = xp;
-  // }
-
-  //위의 코드 간단하게
   final String name;
   int xp;
+  String team;
+  int age;
 
-// 생성자(constructor)
-  Player(this.name, this.xp);
-
+// named parameter를 가진 생성자(constructor)
+  Player(
+      {required this.name,
+      required this.xp,
+      required this.team,
+      required this.age});
+//positional parameter를 가진 생성자
+  Player.createBluePlayer(String name, int age)
+      : this.age = age,
+        this.name = name,
+        this.team = "blue",
+        this.xp = 0;
   void sayHello() {
     print("Hi my name is $name");
   }
 }
 
 void main() {
-  var player = new Player("Sunny", 100);
+  var player = new Player(
+    name: "Sunny",
+    xp: 100,
+    team: "blue",
+    age: 21,
+  );
   player.sayHello();
-  var player2 = Player("Cloudy", 200);
+  var player2 = Player.createBluePlayer(
+    "Cloudy",
+    12,
+  );
   player2.sayHello();
 }
