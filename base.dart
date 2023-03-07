@@ -1,21 +1,15 @@
-//연산자들
-//ex)대문자 교체 (null 값일 경우 ANON 리턴)
+//typedef 함수 타입의 별칭 지정 키워드
+// typedef ListOfInts = List<int>;
 
-//3항 연산자 + fat arrow
-// String capitalizeName (String? name) =>
-//   name != null ? name.toUpperCase() : 'ANON';
+// ListOfInts reverseListOfNumbers(ListOfInts list) {
+//   var reversed = list.reversed;
+//   return reversed.toList();
+// }
 
-// ??(qq 연산자) + fat arrow 사용
-// String capitalizeName(String? name) => name?.toUpperCase() ?? "ANON";
+typedef UserInfo = Map<String, String>;
+String sayHi(UserInfo userInfo) => "Hi ${userInfo["name"]}";
 
 void main() {
-  // capitalizeName("sunny");
-  // capitalizeName(null);
-
-  // ??=  : 값이 null이면 오른쪽 값 할당
-  String? name;
-  name ??= "Sunny";
-  name = null;
-  name ??= "wow";
-  print(name);
+  // print(reverseListOfNumbers([1, 2, 3]));
+  print(sayHi({"name": "sunny"}));
 }
