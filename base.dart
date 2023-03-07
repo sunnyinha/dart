@@ -1,22 +1,20 @@
-//리턴 값 없는 함수
-//void 아무것도 return 하지 않음
-void ansHello() {
-  print("Nice to meet you too.");
-}
+//named parameters
+//함수 선언&구현 하는 쪽에서 매개변수들을 {}에 넣어주고
+//그리고 나서도 null safety 에러가 나는데
+//1. default 값을 설정해 null 가능성을 없앰
+//2. ?로 null 허용(뇌피셜임.. 부정확)
+//3. required를 붙여서 무조건 매개변수 값을 필요로 함을 알려줌.(null 가능성 없앰)
+//3번 같은 경우 주로 로그인할 때, 이메일이나 비밀번호처럼 기본적으로 값을 줄 수 없는 거에서 유용
 
-//return 값이 있는 함수
-String sayHello(String name) {
-  return "Hello $name nice to meet you!";
+String sayHello({String name = "anon", int? age, required String country}) {
+  return "Hello $name, you are $age, and you come from $country";
 }
-
-//one line code 즉시 리턴 시
-//return, 중괄호 빼고 => 로도 표현 가능
-String sayGood() => "GOOD";
-num plus(num a, num b) => a + b;
 
 void main() {
-  print(sayHello("sunny"));
-  ansHello();
-  print(sayGood());
-  print(plus(1, 2));
+  //named parameters 사용
+  print(sayHello(
+    age: 24,
+    country: "KOREA",
+    name: "sunny",
+  ));
 }
