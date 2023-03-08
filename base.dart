@@ -1,9 +1,22 @@
-// class
-//데이터와 해당 데이터를 조작하는 함수(메소드)를 하나의 단위로 묶어서 추상화된 개념
+//enum
+//서로 연관된 상수들의 집합을 나타내는 데이터 타입
+//데이터 값의 오타를 방지할 수 있음.
+
+enum Team {
+  red,
+  blue,
+}
+
+enum XPLevel {
+  beginner,
+  medium,
+  pro,
+}
+
 class Player {
   String name;
-  int xp;
-  String team;
+  XPLevel xp;
+  Team team;
 
   Player({
     required this.name,
@@ -17,12 +30,10 @@ class Player {
 }
 
 void main() {
-  var sunny = Player(name: "sunny", xp: 1200, team: "red");
-  //cascade operation
-  //하나의 객체에 대해 여러 변수, 메소드를 연속적으로 호출가능
+  var sunny = Player(name: "sunny", xp: XPLevel.beginner, team: Team.blue);
   var getsunny = sunny
     ..name = "GOD"
-    ..xp = 1200000
-    ..team = "blue"
+    ..xp = XPLevel.pro
+    ..team = Team.blue
     ..sayHello();
 }
