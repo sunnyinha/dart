@@ -1,48 +1,30 @@
-//abstract class
-//추상화(클래스나 메소드의 공통점을 정의하는 것)
-//직접 생성 x -> 상속으로 구체화
-//메소드 이름과 반환 타입만 정해서 정의가능
+//Inheritance
+//부모 클래스의 특징과 기능을 자식 클래스에게 물려주는 것
+//extends 키워드를 사용하여 상속 관계를 선언
 
-abstract class Human {
-  void walk();
-}
-
-enum Team {
-  red,
-  blue,
-}
-
-enum XPLevel {
-  beginner,
-  medium,
-  pro,
-}
-
-class Player extends Human {
+class Human {
   String name;
-  XPLevel xp;
-  Team team;
-
-  Player({
-    required this.name,
-    required this.xp,
-    required this.team,
-  });
-
+  Human({required this.name});
   void sayHello() {
     print("Hi my name is $name");
   }
+}
 
-  void walk() {
-    print("walking");
+enum Team { blue, red }
+
+class Player extends Human {
+  final Team team;
+//super
+//자식 클래스에서 부모 클래스의 멤버에 접근할 때 사용하는 키워드
+  Player({required this.team, required String name}) : super(name: name);
+
+  @override
+  void sayHello() {
+    super.sayHello();
+    print('and I play for ${team}');
   }
 }
 
 void main() {
-  var sunny = Player(name: "sunny", xp: XPLevel.beginner, team: Team.blue);
-  var getsunny = sunny
-    ..name = "GOD"
-    ..xp = XPLevel.pro
-    ..team = Team.blue
-    ..sayHello();
+  var player = Player(team: Team.red, name: "SUNNY");
 }
