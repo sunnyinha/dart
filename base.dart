@@ -1,6 +1,11 @@
-//enum
-//서로 연관된 상수들의 집합을 나타내는 데이터 타입
-//데이터 값의 오타를 방지할 수 있음.
+//abstract class
+//추상화(클래스나 메소드의 공통점을 정의하는 것)
+//직접 생성 x -> 상속으로 구체화
+//메소드 이름과 반환 타입만 정해서 정의가능
+
+abstract class Human {
+  void walk();
+}
 
 enum Team {
   red,
@@ -13,7 +18,7 @@ enum XPLevel {
   pro,
 }
 
-class Player {
+class Player extends Human {
   String name;
   XPLevel xp;
   Team team;
@@ -26,6 +31,10 @@ class Player {
 
   void sayHello() {
     print("Hi my name is $name");
+  }
+
+  void walk() {
+    print("walking");
   }
 }
 
