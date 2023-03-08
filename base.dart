@@ -4,36 +4,37 @@ class Player {
   final String name;
   int xp;
   String team;
-  int age;
 
-// named parameter를 가진 생성자(constructor)
-  Player(
-      {required this.name,
-      required this.xp,
-      required this.team,
-      required this.age});
-//positional parameter를 가진 생성자
-  Player.createBluePlayer(String name, int age)
-      : this.age = age,
-        this.name = name,
-        this.team = "blue",
-        this.xp = 0;
+  Player.fromJson(Map<String, dynamic> playerjson)
+      : name = playerjson["name"],
+        xp = playerjson["xp"],
+        team = playerjson["team"];
   void sayHello() {
     print("Hi my name is $name");
   }
 }
 
 void main() {
-  var player = new Player(
-    name: "Sunny",
-    xp: 100,
-    team: "blue",
-    age: 21,
-  );
-  player.sayHello();
-  var player2 = Player.createBluePlayer(
-    "Cloudy",
-    12,
-  );
-  player2.sayHello();
+  var apiData = [
+    {
+      "name": "Sunny",
+      "team": "red",
+      "xp": 0,
+    },
+    {
+      "name": " Cloudy",
+      "team": "red",
+      "xp": 0,
+    },
+    {
+      "name": "Rainy",
+      "team": "red",
+      "xp": 0,
+    },
+  ];
+
+  apiData.forEach((playerJson) {
+    var player = Player.fromJson(playerJson);
+    player.sayHello();
+  });
 }
